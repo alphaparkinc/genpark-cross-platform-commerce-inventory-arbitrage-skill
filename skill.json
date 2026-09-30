@@ -1,0 +1,74 @@
+{
+  "name": "genpark-cross-platform-commerce-inventory-arbitrage-skill",
+  "version": "1.0.0",
+  "description": "Universal Cross-Platform Commerce Inventory & Price Arbitrage Engine (inspired by Meta Muse, Shopify, Walmart, Instacart). Performs real-time multi-merchant price comparison, coupon stacking, delivery speed trade-offs, stock volatility tracking, and optimal purchase routing.",
+  "tools": [
+    {
+      "name": "arbitrage_commerce_inventory",
+      "description": "Multi-merchant inventory arbitrage: compare real-time pricing and delivery across merchants, calculate stacked coupons, detect price surges, and optimize purchase routing.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string",
+            "enum": [
+              "compare_merchants",
+              "optimize_purchase_route",
+              "stack_promotions",
+              "detect_price_anomalies"
+            ],
+            "description": "Arbitrage operation to execute."
+          },
+          "product_query": {
+            "type": "string",
+            "description": "Product SKU, name, or search query."
+          },
+          "merchant_offers": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            },
+            "description": "List of quotes from different merchants."
+          },
+          "optimization_objective": {
+            "type": "string",
+            "enum": [
+              "cheapest",
+              "fastest",
+              "balanced"
+            ],
+            "description": "Routing optimization goal."
+          },
+          "cart_items": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            },
+            "description": "Cart items for multi-item routing optimization."
+          },
+          "coupons": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            },
+            "description": "Available promo codes and vouchers."
+          },
+          "subtotal": {
+            "type": "number",
+            "description": "Subtotal for coupon stacking."
+          },
+          "historical_prices": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "description": "Price history for surge detection."
+          }
+        },
+        "required": [
+          "action"
+        ]
+      }
+    }
+  ]
+}
